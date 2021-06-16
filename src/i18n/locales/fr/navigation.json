@@ -1,0 +1,10 @@
+{
+    "Home" : "Acceuil",
+    "Admin" : "Admin",
+    "Account" : "Compte",
+    "Signin" : "Connexion",
+    "Search" : {
+        "placeholder" : "ex : Tecno Camon 17 pro",
+        "button" : "Recherche"
+    }
+}

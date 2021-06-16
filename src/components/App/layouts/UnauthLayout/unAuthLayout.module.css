@@ -1,0 +1,14 @@
+.layout {
+    position : absolute;
+    left: 0;
+    top: 0;
+    height : 100%;
+    width:100%;
+    padding: 10px;
+    background-color: rgb(225, 225, 255);
+    background-image: url("./../../../../img/background3.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}

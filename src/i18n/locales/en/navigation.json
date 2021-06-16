@@ -1,0 +1,10 @@
+{
+    "Home" : "Home",
+    "Admin" : "Admin",
+    "Account" : "Account",
+    "Signin" : "Signin",
+    "Search" : {
+        "placeholder" : "eg : Tecno Camon 17 pro",
+        "button" : "Search"
+    }
+}

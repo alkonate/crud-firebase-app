@@ -1,37 +1,30 @@
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
-// import Container from 'react-bootstrap/Container'
-// import Row from 'react-bootstrap/Row'
-// import Col from 'react-bootstrap/Col'
-import { Navigation } from "../Navigation"
-import * as ROUTES from "../../constants/routes"
-// bootstrap
-import 'bootstrap/dist/css/bootstrap.min.css'
-import { lazy, Suspense } from "react"
+import {BrowserRouter} from 'react-router-dom'
+import { memo, Suspense } from "react"
 import ErrorBoundary from '../ErrorBoundary'
 import {Error} from '../ErrorBoundary'
-import Firebase from './../Firestore'
-const Home = lazy(() => import ('./../Home'))
-// const Home = lazy(() => import ('./../Account'))
+// bootstrap
+import 'bootstrap/dist/css/bootstrap.min.css'
+import UnauthLayout from "./layouts/UnauthLayout"
+import AuthLayout from "./layouts/AuthLayout"
+import { withAuth } from '../Authentication'
+import { hasSessionStorageUser } from '../../helpers'
 
-console.log(new Firebase ())
-const App =  () => {
-
+const App = ({isAuth}) => {
+console.log(isAuth)
     return (
         <div className="app" data-testid="app">
             <ErrorBoundary fallback={<Error />} >
                 <Suspense fallback={<div>loading...</div>}>
-                    <Router>
-                        <Navigation/>
-                        {/* Routes */}
-                        <section className="mt-5" >
-                            <Switch>
-                                <Route path={ROUTES.HOME} component={Home} />
-                            </Switch>
-                        </section>
-                    </Router> 
+                {
+                
+                isAuth || hasSessionStorageUser() ?
+                            <AuthLayout />
+                          :
+                            < UnauthLayout />
+                }
                 </Suspense>
             </ErrorBoundary>
         </div>
     )
 }
-export default App
+export default withAuth(App)

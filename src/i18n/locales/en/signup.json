@@ -1,0 +1,22 @@
+{
+  "card" :{
+    "title" : "New account"
+  },
+  "addressEmail" : {
+        "label" : "Email Address",
+        "placeholder" : "eg : alo@gmail.com",
+        "muted-text" : "Valid Email Address please."
+    },
+  "password" : {
+      "label" : "Password",
+      "placeholder" : "Enter your password",
+      "muted-text" : "Should be at least 6 characters long."
+  },
+  "button" : {
+    "label" : {
+      "submit" : "submit",
+      "signIn" : "Sign In",
+      "signUp" : "Sign Up"
+    }
+  }
+}

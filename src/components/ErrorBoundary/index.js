@@ -10,12 +10,12 @@ class ErrorBoundary extends Component {
         return {
             hasError : true,
             error : error.message
-        }        
+        }
     }
-
-    componentDidCatch (error,errorInfo) {
-        console.log(error,errorInfo)
-    }
+    // side effect
+    // componentDidCatch (error,errorInfo) {
+       
+    // }
 
     render () {
         if (this.state.hasError) {
@@ -27,10 +27,10 @@ class ErrorBoundary extends Component {
 
 export const Error = () => {
     return (
-        <div class="container">
+        <div className="container">
                 <div className="position-absolute top-50 start-50 translate-middle">
                     <div className="text-uppercase bg-secondary text-light p-3 fw-bold">Error</div>
-                    <h3 style={{ 'text-align': 'center' }}>Malehereusement, quelque chose c'est mal passé!.</h3>;
+                    <h3>Malheureusement, quelque chose c'est mal passé!.</h3>
                 </div>
         </div>
     )

@@ -1,0 +1,22 @@
+{
+    "card" :{
+      "title" : "Nouveau compte"
+    },
+    "addressEmail" : {
+          "label" : "Adresse Email",
+          "placeholder" : "ex : alo@gmail.com",
+          "muted-text" : "Entre une adresse email valide svp."
+      },
+    "password" : {
+        "label" : "Mot de passe",
+        "placeholder" : "Entre un mot de passe",
+        "muted-text" : "Entrer un mot de passe de 6 caractères min."
+    },
+    "button" : {
+      "label" : {
+        "submit" : "Soumettre",
+        "signIn" : "Connexion",
+        "signUp" : "Nouveau Compte"
+      }
+    }
+  }
