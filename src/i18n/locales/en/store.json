@@ -23,6 +23,7 @@
         "Close" : "Close",
         "Add" : "Add",
 
+        "Update" : "Update",
         "Delete" : "Delete",
         "Delete warning message" : "Are you sure cause this operation can not be undone ?"
     },

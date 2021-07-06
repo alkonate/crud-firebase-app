@@ -48,9 +48,9 @@ const UpdateStoreModal = ({database,user,updateStore,storeSelectedId}) => {
                 : <CreateUpdateStoreForm
                         initialData={initialData}
                         action={handleUpdate} 
-                        title={t('store:Update Store')} 
+                        title={t('store:Store')} 
                         handleClose={toggleUpdateStoreModal} 
-                        validateBtnText={t("store:form.Update Store")} 
+                        validateBtnText={t("store:form.Update")} 
                     />
           }
       
