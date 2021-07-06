@@ -1,4 +1,5 @@
-{ 
+{
+    "auth/user-not-found" : "Invalid credentials please check what you type in.",
     "auth/app-deleted" : "Database could not be found" , 
     "auth/expired-action-code" : "The action code or the link has expired" , 
     "auth/invalid-action-code" : "The action code is not valid. This can happen if the code is malformed or ya has been used" , 

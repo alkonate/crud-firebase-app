@@ -1,0 +1,16 @@
+.iteminfo{
+    padding: 2px;
+}
+.iteminfotitle {
+    font-size: 1.5em;
+  }
+.iteminfocount {
+    font-size: 2em;   
+}
+
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) { 
+    .iteminfotitle {
+      font-size: 1em;
+    }
+}

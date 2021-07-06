@@ -1,22 +1,23 @@
 import PropTypes from 'prop-types';
 import {withRouter} from 'react-router-dom'
-import * as ROUTES from '../../../../../constants/routes'
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import { Button, Col, Form, Row } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import { composeHoc, getError } from "../../../../../helpers";
 import FormError from "../../../../FormError";
-import {withFirebase} from '../../../../Firebase'
 import {withAuth} from '../../../../Authentication'
 import {authLoadingAction} from '../../../../Authentication/authActions'
-
+import WithAuthService from '../../../../Authentication/AuthService/WithAuthService';
+import WithDatabaseService from '../../../../Database/WithDatabaseService';
 const initialState = {
+    username : "",
     email : "",
     firstpassword : "",
     secondepassword : "",
 }
 
-const SignUpForm = ({firebase, dispatch, loading,history}) => {
+const SignUpForm = ({auth, database, dispatch, loading}) => {
+   
     const [error,setError] = useState(null)
     const [data, setData] = useState(initialState)
     
@@ -38,28 +39,47 @@ const SignUpForm = ({firebase, dispatch, loading,history}) => {
             setError(null)
             dispatch(authLoadingAction(true))
             try {
-                await firebase.doCreateUserWithEmailAndPassword(data.email,data.firstpassword)
-                history.push(ROUTES.HOME)
+                // check if the username exist
+                await auth.usernameDoesNotExist(database,data.username)
+                // create user auth email and pwd
+                await auth.doCreateUserWithEmailAndPassword(data.email,data.firstpassword)
+                // update user auth profil
+                await auth.doUpdateUserProfil({
+                    displayName : data.username,
+                    photoURL: null
+                })
+                // add username at usernames ref 
+                // & add user at  users ref 
+                database.updateNode(database.getNodeRef(),{
+                    [`usernames/${auth.doGetCurrentUserUid()}`] : data.username,
+                    [`users/${auth.doGetCurrentUserUid()}`] : {
+                                                                username: data.username,
+                                                                email : data.email,
+                                                                created_at: database.TIMESTAMP,
+                                                                updated_at: database.TIMESTAMP
+                                                            }
+                })
+                
             } catch (e) {
                 setError(getError(e))
             }finally {
                 dispatch(authLoadingAction(false))
             }
         },
-        [firebase,data,dispatch,history],
+        [auth,database,data,dispatch],
     )
-
-    // on network failed throw error!!!
-    useEffect(() => { 
-        if(error && error.code && error.code === "auth/network-request-failed") {
-            throw error
-        }
-    }, [error])
 
     return (
         <>
         <FormError error={error} />
         <Form onSubmit={onSubmitHandler}>
+        <Form.Group className="mb-3" controlId="formBasicUsername">
+                <Form.Label>{t("signup:username.label")}</Form.Label>
+                <Form.Control type="text" onChange={onchangeHandler} name="username" value={data.username} placeholder={t("signup:username.placeholder")} />
+                <Form.Text className="text-muted">
+                    {t("signup:username.muted-text")}
+                </Form.Text>
+            </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>{t("signup:addressEmail.label")}</Form.Label>
                 <Form.Control type="email" onChange={onchangeHandler} name="email" autoComplete="email" value={data.email} placeholder={t("signup:addressEmail.placeholder")} />
@@ -88,7 +108,7 @@ const SignUpForm = ({firebase, dispatch, loading,history}) => {
                 </Col>
             </Row>
             
-            <Button variant="primary" type="submit" disabled={(loading || data.email === '' || data.firstpassword ==='' || data.secondepassword === '' || data.secondepassword !== data.firstpassword )}>
+            <Button variant="primary" type="submit" disabled={(loading || data.username === '' || data.email === '' || data.firstpassword ==='' || data.secondepassword === '' || data.secondepassword !== data.firstpassword )}>
                 {t("signup:button.label.signUp")}
             </Button>
         </Form>
@@ -98,14 +118,15 @@ const SignUpForm = ({firebase, dispatch, loading,history}) => {
 
 // props validation
 SignUpForm.propTypes = {
-    firebase : PropTypes.object.isRequired, 
+    auth : PropTypes.object.isRequired, 
     dispatch : PropTypes.func.isRequired, 
     loading : PropTypes.bool.isRequired,
     history: PropTypes.object.isRequired
 }
 
 export default composeHoc(
-                            withFirebase,
+                            WithAuthService,
+                            WithDatabaseService,
                             withAuth,
                             withRouter
                                 )(SignUpForm)

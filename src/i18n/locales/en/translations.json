@@ -1,4 +1,6 @@
 {
     "Sign in" : "Sign in",
-    "Sign up" : "Sign up"
+    "Sign up" : "Sign up",
+    "onlineNotification" : "Your are currently <1>online</1>",
+    "offlineNotification" : "Your are currently <1>offline</1>"
 }

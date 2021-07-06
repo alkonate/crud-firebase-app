@@ -10,7 +10,7 @@ const guestGuard = (next) => {
                     return next()
                 }
             }
-              return <Redirect name="Home" />
+              return <Redirect name="Store" />
           }
       )
 }

@@ -1,8 +1,7 @@
 {
     "Home" : "Home",
-    "Admin" : "Admin",
-    "Account" : "Account",
-    "Signin" : "Signin",
+    "Product" : "Product",
+    "Sign out" : "Sign out",
     "Search" : {
         "placeholder" : "eg : Tecno Camon 17 pro",
         "button" : "Search"

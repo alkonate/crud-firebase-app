@@ -1,4 +1,5 @@
 { 
+    "auth/user-not-found" : "Information d'identification invalide veuillez verifier vos identifiants.",
     "auth/app-deleted" : "La base de données n'a pas pu être trouvée" , 
     "auth/expired-action-code" : "Le code d'action ou le lien a expiré" , 
     "auth/invalid-action-code" : "Le le code d'action n'est pas valide. Cela peut arriver si le code est malformé ou si vous avez été utilisé" , 

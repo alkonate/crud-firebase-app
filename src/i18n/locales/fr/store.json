@@ -1,0 +1,35 @@
+{
+    "Store" : "Boutique",
+    "Create store" : "Créer une boutique",
+    "Update store" : "Modifier La boutique",
+    "Delete store" : "Suprimer la boutique",
+    "No store found" : "Aucune boutique retrouvée",
+    "form" : {
+        "New Store" : "Nouvelle boutique",
+        "Name" : "Nom",
+        "eg AdamShop" : "ex: AdamShop",
+        "Enter the name of your store" : "Entrer le nom de votre boutique",
+        "Address" : "Adresse",
+        "eg Thies Ville" : "ex: Thies Ville",
+        "Enter the address of your store" : "Entrer l'adresse de votre boutique",
+        "Telephone" : "Telephone",
+        "eg 77 000 00 00" : "ex: 77 000 00 00",
+        "Enter the telephone of your store" : "Entrer le numero de telephone de votre boutique",
+        "Description" : "Description",
+        "eg We are selling books all around the world" : "ex: Nous vendons des livres partout dans le monde...",
+        "Enter a description for your store" : "Entrer une description de votre boutique",
+        "Close" : "Fermer",
+        "Add" : "Ajouter",
+
+        "Delete" : "Suprimer",
+        "Delete warning message" : "Etes vous sure car cette operation cette opération est irréversible ?"
+    },
+    "item" : {
+        "Description" : "Description",
+        "Address" : "Adresse",
+        "Telephone" : "Telephone",
+        "Product" : "Produit",
+        "Update" : "Modifier",
+        "Delete" : "Suprimer"
+    }
+}

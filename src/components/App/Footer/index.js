@@ -1,7 +1,7 @@
 import LocalSelect from '../LocalSelect'
 export default function Footer () {
      
-    return <footer className="fixed-bottom bg-light text-center text-white">
+    return <footer className="bg-light text-center text-white">
                 <div className="container p-4 pb-0">
                     {/* <!-- Section: Social media --> */}
                     <section className="mb-4">

@@ -1,4 +1,4 @@
-import { Home, Signin, Signup, NotFound } from "../components/App/pages"
+import { Home, Signin, Signup, NotFound, Store } from "../components/App/pages"
 import ProtectedRoute from "./components/ProtectedRoute"
 import { isAuth, isGuest } from "./middlewares"
 
@@ -13,8 +13,13 @@ export const routes = [
     {
         name : "Product",
         path:"/products",
-        exact : true,
         component: Home ,
+        middlewares : [isAuth]
+    },
+    {
+        name : "Store",
+        path:"/stores",
+        component: Store ,
         middlewares : [isAuth]
     },
     {

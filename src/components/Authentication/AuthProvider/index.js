@@ -1,10 +1,10 @@
 import { useEffect } from "react"
 import { useReducer } from "react"
 import { composeHoc } from "../../../helpers"
-import { withFirebase } from "../../Firebase"
 import { authIsAuthAction, authUserAction } from "../authActions"
 import AuthContext from '../AuthContext'
 import AuthReducer from '../authReducer'
+import WithAuthService from "../AuthService/WithAuthService"
 
 const InitialState = {
     user : null,
@@ -12,20 +12,21 @@ const InitialState = {
     loading : false,
 }
 
-const AuthProvider = ({children,firebase}) => {
+const AuthProvider = ({children,auth}) => {
     const [authState, dispatch] = useReducer(AuthReducer, InitialState)
     
     //listen for any change in th user state
     useEffect(() => {
-       const listen = firebase.auth.onAuthStateChanged( user => {
+       const onAuthStateChangedListener = auth.auth.onAuthStateChanged( user => {          
            dispatch(authUserAction(user))
            dispatch( authIsAuthAction(!!user))
        })
 
        return () => {
-           listen()
+           // clear the listener
+           onAuthStateChangedListener()
        }
-    }, [firebase])
+    }, [auth])
 
     return (
         <AuthContext.Provider value={{dispatch,authState}}>
@@ -34,4 +35,4 @@ const AuthProvider = ({children,firebase}) => {
     )
 }
 
-export default composeHoc(withFirebase)(AuthProvider)
+export default composeHoc(WithAuthService)(AuthProvider)

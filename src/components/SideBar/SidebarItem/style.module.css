@@ -1,0 +1,77 @@
+.sidebarTitle {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: bold;
+    text-align: start;
+    white-space: nowrap;
+  }
+
+  .sidebarTitle hr {
+    margin-bottom: 0px;
+  }
+
+
+  .title {
+      display: inline-block;
+      width: 90%;
+  }
+
+
+  .sidebarlinks {
+    width: 100%;
+    perspective: 1000px;
+    display: none;
+  }
+
+  .sidebarlinks.show{
+    display: block;
+  }
+
+.sidebarlinks.show a{
+    display: block;
+    opacity: 0.8;
+}
+
+  .sidebarlinks a {
+    display: none;
+    text-decoration: none;
+    color: white;
+    padding: 10px 20px;
+    margin: 0px;
+    font-size: 16px;
+    opacity: 0;
+  }
+ 
+  .sidebarlinks a:hover{
+    color: white;
+    opacity: 1;
+  }
+
+  .sidebarlinks a:focus{
+    color: white;
+    margin: -4px;
+    border: 4px rgb(136, 136, 136) solid;
+    border-radius: 6px;
+  }
+
+  .sidebarlinks a .select {
+    border: 2px rgb(185, 185, 185) solid;
+  }
+
+.sidebarlinks--animated {
+    display: none;
+}
+
+.sidebarlinks--animated a {
+    display: block;
+    opacity: 1;
+}
+
+/* under Large devices (laptops/desktops, 992px and up) */
+@media only screen and (max-width: 992px) {
+  .titleText {
+    display: none;
+  }
+}

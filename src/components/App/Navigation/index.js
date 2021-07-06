@@ -1,10 +1,12 @@
-import { Container, Row, Col, Button, Navbar, Nav, Form, FormControl } from "react-bootstrap";
+import { Container, Row, Col, Button, Navbar, Dropdown, Form, FormControl } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
-import StyledLink from "./StyledLink";
-import { withFirebase } from "../../Firebase";
-const Navigation = ({firebase}) => {
+import WithAuthService from "../../Authentication/AuthService/WithAuthService";
+import { useMemo } from "react";
+import { withAuth } from "../../Authentication";
+const Navigation = ({auth,user}) => {
     const { t } = useTranslation()
-    const { doSignOut } = firebase
+    const displayName = useMemo( () => user ? user.displayName : "" ,[user])
+    const { doSignOut } = auth
     return (
             <Navbar bg="light" expand="lg" variant="light" className="shadow" >
                 <Navbar.Brand className="text-primary m-1">Bakel!<span className="text-secondary">Shop</span></Navbar.Brand>
@@ -13,12 +15,14 @@ const Navigation = ({firebase}) => {
                 <Container>
                     <Row>
                         <Col>
-                            <Nav className="mr-auto my-2 my-lg-0" navbarScroll>
-                                {/* <StyledLink to={ROUTES.LANDING}>Landing</StyledLink> */}
-                                <StyledLink to={{name : 'Home'}}>{t("navigation:Home")}</StyledLink>
-                                <StyledLink  to={{name : 'Product'}}>{t("navigation:Product")}</StyledLink>
-                                <Button variant="danger" onClick={doSignOut} >{t("navigation:Sign out")}</Button>
-                            </Nav>
+                            <Dropdown>
+                                <Dropdown.Toggle variant="light" id="dropdown-basic">
+                                   {displayName}
+                                </Dropdown.Toggle>
+                                <Dropdown.Menu>
+                                    <Dropdown.Item onClick={doSignOut}>{t("navigation:Sign out")}</Dropdown.Item>
+                                </Dropdown.Menu>
+                            </Dropdown>
                         </Col>
                         <Col>
                             <Form inline className="d-flex">
@@ -33,4 +37,4 @@ const Navigation = ({firebase}) => {
     )
 }
 
-export default withFirebase(Navigation)
+export default withAuth(WithAuthService(Navigation))

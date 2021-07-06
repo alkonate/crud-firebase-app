@@ -1,0 +1,11 @@
+{
+    "Store" : {
+        "Store" : "Store",
+        "Stores" : "Stores",
+        "New store" : "New store"
+    },
+    "Provider" : {
+        "Provider" : "Provider",
+        "New provider" : "New provider"
+    }
+}

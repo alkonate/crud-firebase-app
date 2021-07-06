@@ -1,0 +1,33 @@
+.storeIcon {
+    color : rgb(255, 255, 255);
+}
+
+.description {
+    display: none;
+}
+
+/* mall devices (landscape phones, 576px and up) */
+@media  (max-width: 767.98px) { 
+    .storeIcon {
+        font-size: 2em;
+        margin: 4px;
+    }
+ }
+
+ /* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) { 
+    .storeIcon {
+        font-size: 4em;
+    }
+    
+ }
+
+ /* Large devices Extra large devices (desktops, 992px and up) */
+@media (min-width: 992px) { 
+    .storeIcon {
+        font-size: 5em;
+    }
+    .description {
+        display: block;
+    }
+ }

@@ -1,0 +1,37 @@
+{
+    "Store" : "Store",
+    "Create store" : "Create store",
+    "Update store" : "Update store",
+    "Delete store" : "Delete store",
+    "No store found" : "No store found",
+    "form" : {
+        "New Store" : "New Store",
+        "Update Store" : "Update Store",
+        "Delete store" : "Delete Store",
+        "Name" : "Name",
+        "eg AdamShop" : "eg: AdamShop",
+        "Enter the name of your store" : "Enter the name of your store",
+        "Address" : "Address",
+        "eg Thies Ville" : "eg: Thies Ville",
+        "Enter the address of your store" : "Enter the address of your store",
+        "Telephone" : "Telephone",
+        "eg 77 000 00 00" : "eg 77 000 00 00",
+        "Enter the telephone of your store" : "Enter the telephone of your store",
+        "Description" : "Description",
+        "eg We are selling books all around the world" : "eg: We are selling books all around the world...",
+        "Enter a description for your store" : "Enter a description for your store",
+        "Close" : "Close",
+        "Add" : "Add",
+
+        "Delete" : "Delete",
+        "Delete warning message" : "Are you sure cause this operation can not be undone ?"
+    },
+    "item" : {
+        "Description" : "Description",
+        "Address" : "Address",
+        "Telephone" : "Telephone",
+        "Product" : "Product",
+        "Update" : "Update",
+        "Delete" : "Delete"
+    }
+}

@@ -1,12 +1,11 @@
 import PropTypes from 'prop-types';
 import {withRouter} from 'react-router-dom'
-import * as ROUTES from '../../../../../constants/routes'
 import { useCallback, useEffect, useState } from "react";
 import { Button, Col, Form, Row } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import { composeHoc, getError } from "../../../../../helpers";
 import FormError from "../../../../FormError";
-import {withFirebase} from '../../../../Firebase'
+import WithAuthService from '../../../../Authentication/AuthService/WithAuthService';
 import {withAuth} from '../../../../Authentication'
 import {authLoadingAction} from '../../../../Authentication/authActions'
 
@@ -15,7 +14,7 @@ const initialState = {
     password : "",
 }
 
-const SignInForm = ({firebase, dispatch, loading,history}) => {
+const SignInForm = ({auth, dispatch, loading}) => {
     const [error,setError] = useState(null)
     const [data, setData] = useState(initialState)
     
@@ -37,15 +36,14 @@ const SignInForm = ({firebase, dispatch, loading,history}) => {
             setError(null)
             dispatch(authLoadingAction(true))
             try {
-                await firebase.doSignInWithEmailAndPassword(data.email, data.password)
-                history.push(ROUTES.HOME)
+                await auth.doSignInWithEmailAndPassword(data.email, data.password)
             } catch (e) {
                 setError(getError(e))
             }finally {
                 dispatch(authLoadingAction(false))
             }
         },
-        [firebase,data,dispatch,history],
+        [auth,data,dispatch],
     )
 
     // on network failed throw error!!!
@@ -88,14 +86,14 @@ const SignInForm = ({firebase, dispatch, loading,history}) => {
 
 // props validation
 SignInForm.propTypes = {
-    firebase : PropTypes.object.isRequired, 
+    auth : PropTypes.object.isRequired, 
     dispatch : PropTypes.func.isRequired, 
     loading : PropTypes.bool.isRequired,
     history: PropTypes.object.isRequired
 }
 
 export default composeHoc(
-                            withFirebase,
+                            WithAuthService,
                             withAuth,
                             withRouter
                                 )(SignInForm)

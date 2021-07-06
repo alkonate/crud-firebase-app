@@ -1,25 +1,38 @@
-import {BrowserRouter} from 'react-router-dom'
-import { memo, Suspense } from "react"
+import { Suspense } from "react"
+import { Online, Offline } from "react-detect-offline";
 import ErrorBoundary from '../ErrorBoundary'
 import {Error} from '../ErrorBoundary'
-// bootstrap
-import 'bootstrap/dist/css/bootstrap.min.css'
 import UnauthLayout from "./layouts/UnauthLayout"
 import AuthLayout from "./layouts/AuthLayout"
-import { withAuth } from '../Authentication'
 import { hasSessionStorageUser } from '../../helpers'
+import Dismissable from '../Dismissable'
+import OnlineNotification from './../OnlineNotification'
+import OfflineNotification from './../OfflineNOtification'
+// bootstrap
+import 'bootstrap/dist/css/bootstrap.min.css'
+import './../../index.css'
+import { withAuth } from "../Authentication";
+
 
 const App = ({isAuth}) => {
-console.log(isAuth)
+
     return (
         <div className="app" data-testid="app">
             <ErrorBoundary fallback={<Error />} >
                 <Suspense fallback={<div>loading...</div>}>
+                <Offline>
+                    <OfflineNotification />
+               </Offline>
+               <Online>
+                    <Dismissable duration="2000">
+                        <OnlineNotification />
+                    </Dismissable>
+               </Online>
                 {
-                
                 isAuth || hasSessionStorageUser() ?
+
                             <AuthLayout />
-                          :
+                          : 
                             < UnauthLayout />
                 }
                 </Suspense>

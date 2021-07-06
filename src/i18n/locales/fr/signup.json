@@ -2,6 +2,12 @@
     "card" :{
       "title" : "Nouveau compte"
     },
+    "username": {
+      "label" : "Nom d'utilisateur",
+      "placeholder" : "ex : bakelista02",
+      "muted-text" : "Enter un nom d'utilisateur valide svp.",
+      "invalid" : "Ce nom d'utilisateur est invalide essayer un notre slvp."
+    },
     "addressEmail" : {
           "label" : "Adresse Email",
           "placeholder" : "ex : alo@gmail.com",

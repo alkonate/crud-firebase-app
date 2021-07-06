@@ -1,0 +1,11 @@
+{
+    "Store" : {
+        "Store" : "Boutique",
+        "Stores" : "Boutiques",
+        "New store" : "Nouvelle boutique"
+    },
+    "Provider" : {
+        "Provider" : "Founisseur",
+        "New provider" : "Nouveau fournisseur"
+    }
+}

@@ -3,10 +3,10 @@ import {useTranslation} from 'react-i18next'
 export default function FormError ({error}) {
     const {t} = useTranslation()
     return (
-        error && 
+        error  && 
             <Alert variant="danger">
                 {
-                    t("authValidation:"+error.code)
+                    t("authValidation:" + error.code )
                 }
             </Alert>
     )

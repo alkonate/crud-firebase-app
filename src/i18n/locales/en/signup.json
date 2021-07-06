@@ -2,10 +2,16 @@
   "card" :{
     "title" : "New account"
   },
+  "username": {
+    "label" : "Username",
+    "placeholder" : "eg : bakelista02",
+    "muted-text" : "Enter a valid username Address please.",
+    "invalid" : "Invalid username please try an other one."
+  },
   "addressEmail" : {
         "label" : "Email Address",
         "placeholder" : "eg : alo@gmail.com",
-        "muted-text" : "Valid Email Address please."
+        "muted-text" : "Enter a valid Email Address please."
     },
   "password" : {
       "label" : "Password",

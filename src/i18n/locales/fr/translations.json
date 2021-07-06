@@ -1,4 +1,6 @@
 {
     "Sign in" : "Connexion",
-    "Sign up" : "Nouveau Compte"
+    "Sign up" : "Nouveau Compte",
+    "onlineNotification" : "Vous etes actuellement <1>en ligne</1>",
+    "offlineNotification" : "Vous etes actuellement <1>hors ligne</1>"
 }
